@@ -1,0 +1,101 @@
+{% load static from static%}
+
+<style> 
+
+    .visibledevice {display:none;}
+    .visibledesktop {display:display;}
+
+    @media (max-width : 320px) {
+        .visibledevice {display:block;}
+        .visibledesktop {display:none;}
+   }
+
+  .dropbtn {
+     background-color: #dbbc2f;
+     color: white;
+     padding: 16px;
+     font-size: 16px;
+     border: none;
+   }
+   
+   .dropdown {
+     position:relative; 
+     left:1000000px;
+     top:2000000px; 
+     background-color:#dbbc2f;
+     display: inline-block;
+   }
+   
+   .dropdown-content {
+     display: none;
+     position: absolute;
+     background-color: #f1f1f100;
+     min-width: 160px;
+     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+     z-index: 1;
+   }
+   
+   .dropdown-content a {
+     color: white;
+     padding: 12px 16px;
+     text-decoration: none;
+     display: block;
+   }
+   
+   .dropdown-content a:hover {background-color: #ddd;}
+   
+   .dropdown:hover .dropdown-content {display: block;}
+   
+   .dropdown:hover .dropbtn {background-color: #a38914;}
+  </style>
+
+<!DOCTYPE html>
+<html>
+  <head>
+	<link rel="stylesheet" href="{% static 'main.css' %}"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:500" rel="stylesheet" />
+	<title>Open Dictionary</title>
+  </head>
+  <body>
+    <div class="s129">
+      <form action="/result/" method="POST">
+		    {% csrf_token %}
+        <div class="inner-form">
+          <div class="input-field">
+            <button class="btn-search" action="/result/"> 
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+              </svg>
+            </button>
+            <input id="search" type="text" name="search_query" placeholder="What are you looking for?" />
+
+            <div class="flex-container">
+              <div class="dropdown" style="position:relative; left:91px; top:10px; background-color:#dbbc2f;">
+               <form  action="">
+                 <SELECT method="POST" class="dropbtn" action=None name="lang">
+                   <div class="dropdown-content">
+                      <option value="en_US" name="en_US">English (US)</option>              
+                      <option value="en_GB" name="en_GB">English (UK)</option>              
+                      <option value="hi" name="hi">Hindi</option>       
+                      <option value="es" name="es">Spanish</option>         
+                      <option value="it" name="it">Italian</option>         
+                      <option value="fr" name="fr">French</option>        
+                      <option value="ru" name="ru">Russian</option>         
+                   </div> 
+                 </SELECT>
+               </form>     
+              </div> 
+            </div>
+
+          </div>
+        </div> 
+    
+    </div>
+  </body>
+
+
+</html>
+
